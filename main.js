@@ -46,39 +46,63 @@ function clearDom() {
 // Event
 function registerEvents() {}
 
-
 // All add right to left
-function allAddRightToLeft(){
+function allAddRightToLeft() {
   //write here
-
 }
 
 // All add left to right
-function allAddLeftToRight(){
+function allAddLeftToRight() {
   //write here
-
 }
 
-
 // Single add left to right
-function singleAddToLeft(){
+function singleAddToLeft() {
   //write here
-
 }
 
 // Single add right to left
-function singleAddToRight(){
+function singleAddToRight() {
   //write here
-
 }
-
 
 // Handle checked
-function handleChecked(){
+function handleChecked() {
   //write here
-
+  document.addEventListener("DOMContentLoaded", function () {
+    const getItemsLeftSide = document.querySelectorAll(".left-side .box");
+    const getItemsRightSide = document.querySelectorAll(".right-side .box");
+    // Left Side Event checked change
+    getItemsLeftSide.forEach((element) =>
+      element.children[0].addEventListener("change", function (event) {
+        // define a variable and set target content
+        const target = event.target.nextElementSibling.textContent;
+        // navigate on left list object
+        leftList.forEach((items) => {
+          // check and change
+          if (items.title === target) {
+            items.checked = !items.checked;
+            console.log(items);
+          }
+        });
+      })
+    );
+    // Right Side Items Checked change
+    getItemsRightSide.forEach((element) =>
+      element.children[0].addEventListener("change", function (event) {
+        // define a variable and set target content
+        const target = event.target.nextElementSibling.textContent;
+        // navigate on left list object
+        rightList.forEach((items) => {
+          // check and change
+          if (items.title === target) {
+            items.checked = !items.checked;
+            console.log(items);
+          }
+        });
+      })
+    );
+  });
 }
 
-
-
-
+handleChecked();
