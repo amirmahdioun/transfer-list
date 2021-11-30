@@ -50,8 +50,15 @@ function registerEvents() {}
 // All add right to left
 function allAddRightToLeft(){
   //write here
-
+    rightList.forEach((item) =>{
+        leftList.push(item);
+    })
+    rightList = []
+    leftSide.innerHTML = ''
+    rightSide.innerHTML = ''
+    renderDom(leftList, rightList);
 }
+$('.all-to-left').click(allAddRightToLeft)
 
 // All add left to right
 function allAddLeftToRight(){
