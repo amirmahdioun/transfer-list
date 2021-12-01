@@ -57,6 +57,8 @@ function allAddRightToLeft(){
     leftSide.innerHTML = ''
     rightSide.innerHTML = ''
     renderDom(leftList, rightList);
+    $('.all-to-left').addClass('disabled')
+    $('.checked-to-left').addClass('disabled')
 }
 $('.all-to-left').click(allAddRightToLeft)
 
