@@ -21,14 +21,14 @@ renderDom(leftList, rightList);
 function renderDom(leftListToRender, rightListToRender) {
   leftListToRender.forEach((item) => {
     leftSide.innerHTML += `<div class="box">
-        <input type="checkbox" class="input-box" id="${item.id}" />
+        <input type="checkbox" class="input-box" id="${item.id}" onchange="handleChecked(event)"/>
         <label for="${item.id}">${item.title}</label>
         </div>`;
   });
 
   rightListToRender.forEach((item) => {
     rightSide.innerHTML += `<div class="box">
-          <input type="checkbox" class="input-box" id="${item.id}" />
+          <input type="checkbox" class="input-box" id="${item.id}" onchange="handleChecked(event)"/>
           <label for="${item.id}">${item.title}</label>
           </div>`;
   });
@@ -67,42 +67,16 @@ function singleAddToRight() {
 }
 
 // Handle checked
-function handleChecked() {
+function handleChecked(e) {
   //write here
-  document.addEventListener("DOMContentLoaded", function () {
-    const getItemsLeftSide = document.querySelectorAll(".left-side .box");
-    const getItemsRightSide = document.querySelectorAll(".right-side .box");
-    // Left Side Event checked change
-    getItemsLeftSide.forEach((element) =>
-      element.children[0].addEventListener("change", function (event) {
-        // define a variable and set target content
-        const target = event.target.nextElementSibling.textContent;
-        // navigate on left list object
-        leftList.forEach((items) => {
-          // check and change
-          if (items.title === target) {
-            items.checked = !items.checked;
-            console.log(items);
-          }
-        });
-      })
-    );
-    // Right Side Items Checked change
-    getItemsRightSide.forEach((element) =>
-      element.children[0].addEventListener("change", function (event) {
-        // define a variable and set target content
-        const target = event.target.nextElementSibling.textContent;
-        // navigate on left list object
-        rightList.forEach((items) => {
-          // check and change
-          if (items.title === target) {
-            items.checked = !items.checked;
-            console.log(items);
-          }
-        });
-      })
-    );
-  });
+    leftList.forEach((item) => {
+        if (item.title == e.target.nextElementSibling.textContent) {
+            item.checked = !item.checked;
+        }
+    })
+    rightList.forEach((item) => {
+        if (item.title == e.target.nextElementSibling.textContent) {
+            item.checked = !item.checked;
+        }
+    })
 }
-
-handleChecked();
