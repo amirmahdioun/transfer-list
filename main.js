@@ -131,6 +131,4 @@ function handleChecked() {
   });
 }
 
-
-
-
+handleChecked();
