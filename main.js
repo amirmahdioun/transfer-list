@@ -63,7 +63,6 @@ function allAddLeftToRight() {
 // Single add left to right
 function singleAddToLeft() {
     //write here
-    console.log(rightList.length)
     if (rightList.length > 1) {
         rightList.forEach((item) => {
             if(item.checked){
