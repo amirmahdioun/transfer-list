@@ -60,7 +60,6 @@ function allAddRightToLeft(){
     $('.all-to-left').addClass('disabled')
     $('.checked-to-left').addClass('disabled')
 }
-$('.all-to-left').click(allAddRightToLeft)
 
 // All add left to right
 function allAddLeftToRight(){
@@ -80,14 +79,34 @@ function allAddLeftToRight(){
 
 
 // Single add left to right
-function singleAddToLeft(){
-  //write here
-
+function singleAddToLeft() {
+    //write here
+    if (rightList.length > 1) {
+        rightList.forEach((item) => {
+            if(item.checked){
+                leftList.push(item)
+                rightList = rightList.filter((obj) => obj.title != item.title )
+            }
+        })
+    }else if (rightList.length <= 1) {
+        rightList.forEach((item) => {
+            if(item.checked){
+                leftList.push(item)
+                rightList = rightList.filter((obj) => obj.title != item.title )
+            }
+        })
+        $('.checked-to-left').addClass('disabled')
+        $('.all-to-left').addClass('disabled')
+    }
+    leftSide.innerHTML = ''
+    rightSide.innerHTML = ''
+    renderDom(leftList, rightList);
 }
+$('.checked-to-left').click(singleAddToLeft)
 
 // Single add right to left
-function singleAddToRight(){
-  //write here
+function singleAddToRight() {
+    //write here
 
 }
 
