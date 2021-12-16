@@ -104,6 +104,7 @@ function singleAddToLeft() {
     rightSide.innerHTML = ''
     renderDom(leftList, rightList);
 }
+$('.checked-to-left').click(singleAddToLeft)
 
 // Single add right to left
 function singleAddToRight(){
