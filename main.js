@@ -56,6 +56,19 @@ function allAddRightToLeft(){
 // All add left to right
 function allAddLeftToRight(){
   //write here
+
+}
+
+
+// Single add left to right
+function singleAddToLeft(){
+  //write here
+
+}
+
+// Single add right to left
+function singleAddToRight(){
+  //write here
   if (leftList.length > 1) {
     leftList.forEach((item) => {
       if(item.checked){
@@ -79,20 +92,6 @@ function allAddLeftToRight(){
 }
 $('.checked-to-right').click(singleAddToRight)
 
-}
-
-
-// Single add left to right
-function singleAddToLeft(){
-  //write here
-
-}
-
-// Single add right to left
-function singleAddToRight(){
-  //write here
-
-}
 
 
 // Handle checked
