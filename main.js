@@ -50,20 +50,57 @@ function registerEvents() {}
 // All add right to left
 function allAddRightToLeft(){
   //write here
-
+    rightList.forEach((item) =>{
+        leftList.push(item);
+    })
+    rightList = []
+    leftSide.innerHTML = ''
+    rightSide.innerHTML = ''
+    renderDom(leftList, rightList);
+    $('.all-to-left').addClass('disabled')
+    $('.checked-to-left').addClass('disabled')
 }
 
 // All add left to right
 function allAddLeftToRight(){
   //write here
-
+  const allToRightBtn = document.querySelector('.all-to-right');
+  const checkedToRightBtn = document.querySelector('.checked-to-right');
+  leftSide.innerHTML = '';
+  rightSide.innerHTML = '';
+  leftList.forEach(item => {
+    rightList.push(item);
+  });
+  leftList = [];
+  allToRightBtn.classList.add('disabled');
+  checkedToRightBtn.classList.add('disabled');
+  renderDom(leftList,rightList);
 }
 
 
 // Single add left to right
-function singleAddToLeft(){
-  //write here
-
+function singleAddToLeft() {
+    //write here
+    if (rightList.length > 1) {
+        rightList.forEach((item) => {
+            if(item.checked){
+                leftList.push(item)
+                rightList = rightList.filter((obj) => obj.title != item.title )
+            }
+        })
+    }else if (rightList.length <= 1) {
+        rightList.forEach((item) => {
+            if(item.checked){
+                leftList.push(item)
+                rightList = rightList.filter((obj) => obj.title != item.title )
+            }
+        })
+        $('.checked-to-left').addClass('disabled')
+        $('.all-to-left').addClass('disabled')
+    }
+    leftSide.innerHTML = ''
+    rightSide.innerHTML = ''
+    renderDom(leftList, rightList);
 }
 
 // Single add right to left
@@ -95,9 +132,42 @@ $('.checked-to-right').click(singleAddToRight)
 
 
 // Handle checked
-function handleChecked(){
+function handleChecked() {
   //write here
-
+  document.addEventListener("DOMContentLoaded", function () {
+    const getItemsLeftSide = document.querySelectorAll(".left-side .box");
+    const getItemsRightSide = document.querySelectorAll(".right-side .box");
+    // Left Side Event checked change
+    getItemsLeftSide.forEach((element) =>
+      element.children[0].addEventListener("change", function (event) {
+        // define a variable and set target content
+        const target = event.target.nextElementSibling.textContent;
+        // navigate on left list object
+        leftList.forEach((items) => {
+          // check and change
+          if (items.title === target) {
+            items.checked = !items.checked;
+            console.log(items);
+          }
+        });
+      })
+    );
+    // Right Side Items Checked change
+    getItemsRightSide.forEach((element) =>
+      element.children[0].addEventListener("change", function (event) {
+        // define a variable and set target content
+        const target = event.target.nextElementSibling.textContent;
+        // navigate on left list object
+        rightList.forEach((items) => {
+          // check and change
+          if (items.title === target) {
+            items.checked = !items.checked;
+            console.log(items);
+          }
+        });
+      })
+    );
+  });
 }
 
 
