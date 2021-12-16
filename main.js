@@ -56,6 +56,28 @@ function allAddRightToLeft(){
 // All add left to right
 function allAddLeftToRight(){
   //write here
+  if (leftList.length > 1) {
+    leftList.forEach((item) => {
+      if(item.checked){
+        rightList.push(item)
+        leftList = leftList.filter((obj) => obj.title != item.title )
+      }
+    })
+  }else if (leftList.length <= 1) {
+    leftList.forEach((item) => {
+      if(item.checked){
+        rightList.push(item)
+        leftList = leftList.filter((obj) => obj.title != item.title )
+      }
+    })
+    $('.checked-to-right').addClass('disabled')
+    $('.all-to-right').addClass('disabled')
+  }
+  leftSide.innerHTML = ''
+  rightSide.innerHTML = ''
+  renderDom(leftList, rightList);
+}
+$('.checked-to-right').click(singleAddToRight)
 
 }
 
