@@ -50,6 +50,8 @@ function registerEvents() {}
 // All add right to left
 function allAddRightToLeft(){
   //write here
+    const allToLeftBtn = document.querySelector('.all-to-left');
+    const checkedToLeftBtn = document.querySelector('.checked-to-left');
     rightList.forEach((item) =>{
         leftList.push(item);
     })
@@ -57,8 +59,8 @@ function allAddRightToLeft(){
     leftSide.innerHTML = ''
     rightSide.innerHTML = ''
     renderDom(leftList, rightList);
-    $('.all-to-left').addClass('disabled')
-    $('.checked-to-left').addClass('disabled')
+    allToLeftBtn.classList.add('disabled');
+    checkedToLeftBtn.classList.add('disabled');
 }
 
 // All add left to right
