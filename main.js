@@ -116,6 +116,8 @@ function singleAddToLeft() {
     }
     leftSide.innerHTML = ''
     rightSide.innerHTML = ''
+    checkedToRightBtn.classList.remove('disabled')
+    allToRightBtn.classList.remove('disabled')
     renderDom(leftList, rightList);
 }
 
@@ -148,6 +150,8 @@ function singleAddToRight() {
     }
     leftSide.innerHTML = ''
     rightSide.innerHTML = ''
+    checkedToLeftBtn.classList.remove('disabled')
+    allToLeftBtn.classList.remove('disabled')
     renderDom(leftList, rightList);
 }
 
